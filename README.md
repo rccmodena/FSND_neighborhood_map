@@ -2,7 +2,7 @@
 
 This is the fifth project of the Udacity's Full Stack Web Developers Nanodegree.
 
-The project consists in developing a single page application featuring a map of a neighborhood I would like to visit ( [Fernando de Noronha](https://en.wikipedia.org/wiki/Fernando_de_Noronha)).
+The project consists in developing a single page application featuring a map of a neighborhood I would like to visit ([Fernando de Noronha](https://en.wikipedia.org/wiki/Fernando_de_Noronha)).
 
 
 Some functionality was added to this map including **highlighted locations, third-party data about those locations and various ways to browse the content.
@@ -27,6 +27,11 @@ The website uses:
 - [jQuery 3.3.1](https://code.jquery.com/)
 - [Google Font - Josefin Sans](https://fonts.google.com/specimen/Josefin+Sans)
 
+## References
+
+- [Bootstrap](https://getbootstrap.com/docs/4.2/getting-started/introduction/)
+- [W3schools](https://www.w3schools.com/)
+- [Google Maps API V3](https://developers.google.com/maps/documentation/javascript/reference/)
 
 ## How to Contribute
 
