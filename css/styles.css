@@ -1,5 +1,15 @@
-body {
+html, body {
   font-family: 'Josefin Sans', sans-serif;
-  background-color: black;
-  color: white;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  margin-top: 30px;
+}
+
+#map {
+  min-height: 800px;
+  height: 100%;
 }

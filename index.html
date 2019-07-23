@@ -20,8 +20,30 @@
     <link rel="stylesheet" href="css/styles.css">
 
   </head>
-  <body>
-    <h1>Neighborhood Map</h1>
+  <body class="bg-dark text-light" >
+
+    <!-- Header -->
+    <header>
+      <div class="container-fluid text-center">
+        <h1>Fernando de Noronha Map</h1>
+        <h2>Best Places to Visit!</h2>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12 col-md-3 bg-secondary">
+            <span class="text">Search: </span>
+            <input id="places-search" type="text" placeholder="Ex. Pizza delivery in NYC">
+            <input id="filter-markers" type="button" value="Filter">
+          </div>
+          <div id="map" class="col-xs-12 col-md-9"></div>
+        </div>
+      </div>
+
+    </main>
 
     <!-- Bootstrap Javascript -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,5 +52,8 @@
 
     <!-- Import my scripts -->
     <script src="js/app.js"></script>
+
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyAWghJ5vDuT7ryC_amkqCGcpV4S47wjypc&v=3&callback=initMap"></script>
   </body>
 </html>
