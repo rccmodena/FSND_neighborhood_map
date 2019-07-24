@@ -60,13 +60,7 @@ let viewModel = function() {
   initialPlaces.forEach(function(placeItem){
     self.placesList.push(new Place(placeItem));
   });
-  this.placesList().forEach(function(test){
-    console.log(test.name());
-    console.log(test.lat());
-    console.log(test.lng());
-  });
-
-}
+};
 
 
 ko.applyBindings(new viewModel());
@@ -82,7 +76,8 @@ const  initialCoordinate = {lat: -27.113062, lng: -109.349946};
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: initialCoordinate,
-    zoom: 12
+    zoom: 12,
+    mapTypeId: 'terrain'
   });
 }
 // *************** GOOGLE MAPS API ***************
