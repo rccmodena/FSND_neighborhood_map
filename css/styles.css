@@ -6,10 +6,44 @@ html, body {
 }
 
 header {
-  margin-top: 30px;
+  margin-top: 10px;
+}
+
+main {
+  margin: 100;
+  padding: 0;
 }
 
 #map {
-  min-height: 800px;
+  position: absolute;
+  top: 80px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#hamburgerButton {
+  font-size: 30px;
+  cursor: pointer;
+  text-align: left;
+}
+
+#closeButton {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#sideMenu {
   height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 70px;
 }
