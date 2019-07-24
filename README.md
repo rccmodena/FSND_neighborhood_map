@@ -37,6 +37,12 @@ The website uses:
 - [Google Maps API V3 - Docs](https://developers.google.com/maps/documentation/javascript/reference/)
 - [Knockout Docs](https://knockoutjs.com/documentation/introduction.html)
 
+## Tests
+
+This app was tested in:
+- Firefox Quantum 68.0.1
+- Chrome 75.0.3770.142
+
 ## How to Contribute
 
 If you find any bug or have a suggestion for another resources, feel free to improve this project.
