@@ -2,7 +2,7 @@
 
 This is the fifth project of the Udacity's Full Stack Web Developers Nanodegree.
 
-The project consists in developing a single page application featuring a map of a neighborhood I would like to visit ([Fernando de Noronha](https://en.wikipedia.org/wiki/Fernando_de_Noronha)).
+The project consists in developing a single page application featuring a map of a neighborhood I would like to visit ([Easter Island](https://en.wikipedia.org/wiki/Easter_Island)).
 
 
 Some functionality was added to this map including **highlighted locations, third-party data about those locations and various ways to browse the content.
