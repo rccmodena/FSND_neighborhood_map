@@ -62,12 +62,16 @@ let viewModel = function() {
   });
 };
 
-
 ko.applyBindings(new viewModel());
 // *************** VIEW MODEL ***************
 
+
 // *************** GOOGLE MAPS API ***************
+// Create the variable for the map
 let map;
+
+// Create the array of markers
+let markers = [];
 
 // Initial coordinate of the Easter Island
 const  initialCoordinate = {lat: -27.113062, lng: -109.349946};
@@ -77,7 +81,92 @@ function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: initialCoordinate,
     zoom: 12,
-    mapTypeId: 'terrain'
+    mapTypeId: 'terrain',
+    mapTypeControl: true,
+    mapTypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        position: google.maps.ControlPosition.RIGHT_CENTER
+    }
+  });
+
+  // Create an Info Window
+  const markerInfoWindow = new google.maps.InfoWindow();
+
+  // Create an normal icon
+  const normalIcon = makeMarkerIcon('ff0000');
+
+  // Create an selected icon, when clicked or hover over it
+  const selectedIcon = makeMarkerIcon('00ff00');
+
+  // Create all markers from initialPlaces
+  initialPlaces.forEach(function(place, index){
+    const position = {lat: Number(place.lat), lng: Number(place.lng)};
+    const name = place.name;
+
+    const marker = new google.maps.Marker({
+      position: position,
+      title: name,
+      animation: google.maps.Animation.DROP,
+      icon: normalIcon,
+      id: index
+    });
+
+    // Push the marker to our array of markers.
+    markers.push(marker);
+
+
+
+    /*
+    // Restrict the map bounds
+    let bounds = new google.maps.LatLngBounds();
+
+    // Extend the boundaries of the map for each marker
+    bounds.extend(marker.position);
+    */
+
+
+
+    // Create an onclick event to open an infowindow at each marker.
+    marker.addListener('click', function(){
+      populateInfoWindow(this, markerInfoWindow);
+    });
+
+    // Two event listeners - one for mouseover, one for mouseout, to change the colors back and forth.
+    marker.addListener('mouseover', function(){
+      this.setIcon(selectedIcon);
+    });
+
+    marker.addListener('mouseout', function(){
+      this.setIcon(normalIcon);
+    });
+  });
+
+  showMarkers();
+}
+
+// This function takes in a color, and then creates a new marker icon of that color. The icon will be 21px wide by 34 high, have an origin of 0, 0 and be anchored at 10, 34.
+function makeMarkerIcon(markerColor){
+  const markerImage = new google.maps.MarkerImage(
+  'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1|0|' + markerColor + '|40|_|%E2%80%A2',
+    new google.maps.Size(21,34),
+    new google.maps.Point(0, 0),
+    new google.maps.Point(10, 34),
+    new google.maps.Size(21, 34)
+  );
+  return markerImage;
+}
+
+// Show all markers
+function showMarkers() {
+  markers.forEach(function(marker, index){
+    marker.setMap(map);
+  });
+}
+
+// This function will loop through the listings and hide them all.
+function hideMarkers(markers) {
+  markers.forEach(function(marker, index){
+    marker.setMap(null);
   });
 }
 // *************** GOOGLE MAPS API ***************
