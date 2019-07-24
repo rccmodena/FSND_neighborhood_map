@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Fernando de Noronha Map App</title>
+    <title>Easter Island Map</title>
 
     <!-- Bootstrap 4 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -25,8 +25,7 @@
     <!-- Header -->
     <header>
       <div class="container-fluid text-center">
-        <h1>Fernando de Noronha Map</h1>
-        <h2>Best Places to Visit!</h2>
+        <h1>Easter Island</h1>
       </div>
     </header>
 
@@ -35,9 +34,12 @@
       <div class="container-fluid">
         <div class="row">
           <div id="" class="col-xs-12 col-md-3">
-            <span>Search: </span>
-            <input id="places-search" type="text" placeholder="Ex. Pizza delivery in NYC" size="27">
-            <input id="filter-markers" type="button" value="Filter">
+            <input id="places-search" type="text" placeholder="Search a place. Ex. Orongo" size="40">
+            <!--
+            <ul id="placessList" data-bind="foreach: placeFiltered">
+              <li data-bind="text: name"></li>
+            </ul>
+          -->
           </div>
           <div id="map" class="col-xs-12 col-md-9"></div>
         </div>
@@ -49,6 +51,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <!-- Knockout -->
+    <script src="js/lib/knockout-3.5.0.js"></script>
 
     <!-- Import my scripts -->
     <script src="js/app.js"></script>
