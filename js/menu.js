@@ -1,6 +1,6 @@
 // Function to show the side menu
 function showSideMenu() {
-  document.getElementById("sideMenu").style.width = "400px";
+  document.getElementById("sideMenu").style.width = "300px";
   document.getElementById("sideMenu").classList.toggle("container-fluid");
 }
 

@@ -22,36 +22,36 @@
   </head>
   <body class="bg-dark text-light" >
 
-    <!-- Header -->
-    <header>
-      <div class="container-fluid text-center">
-        <div class="row">
-          <div class="col-xs-12 col-md-2 text-left">
-            <button id="hamburgerButton" class="btn btn-dark" type="button">
-              <span>&#9776; Search</span>
-            </button>
-          </div>
-          <div id="" class="col-xs-12 col-md-10">
-            <h1>Easter Island</h1>
-          </div>
-      </div>
-    </header>
+    <!-- Google Maps div -->
+    <div id="map"></div>
 
-    <!-- Main Content -->
-    <main>
-      <div id="sideMenu" class="bg-dark text-light">
-        <button id="closeButton" class="btn btn-dark" type="button">
-          <span>&times;</span>
-        </button>
-        <hr>
-        <input id="places-search" class="form-control" type="text" placeholder="Search a place. Ex. Orongo" size="20">
-        <hr>
-        <ul id="placessList" class="list-group" data-bind="foreach: placesList">
-          <li class="list-group-item list-group-item-action" data-bind="text: name"></li>
-        </ul>
+    <!-- Website header with search button -->
+    <div id="siteHeader" class="container-fluid text-center bg-dark text-light">
+      <div class="row">
+        <div class="col-sm-12 col-md-3 text-left">
+          <button id="hamburgerButton" class="btn btn-dark" type="button">
+            <span>&#9776; Search</span>
+          </button>
+        </div>
+        <div class="col-sm-12 col-md-9 order-first order-md-last">
+          <h1>Easter Island Map</h1>
+        </div>
       </div>
-      <div id="map"></div>
-    </main>
+    </div>
+
+    <!-- Side menu content -->
+    <div id="sideMenu" class="bg-dark text-light">
+      <button id="closeButton" class="btn btn-dark" type="button">
+        <span>&times;</span>
+      </button>
+      <hr>
+      <input id="places-search" class="form-control" type="text" placeholder="Search a place. Ex. Orongo" size="20">
+      <hr>
+      <ul id="placessList" class="list-group" data-bind="foreach: placesList">
+        <li class="list-group-item list-group-item-action" data-bind="text: name"></li>
+      </ul>
+    </div>
+
 
     <!-- Bootstrap Javascript -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
