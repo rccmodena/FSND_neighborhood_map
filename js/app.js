@@ -153,6 +153,7 @@ function initMap() {
 
     // Bounce the marker once and open an info window when click the item in the list that corresponds to a marker.
     document.getElementsByTagName("li")[index].addEventListener('click', function(){
+      map.setCenter(marker.getPosition());
       bounceMarker(marker);
       createInfoWindow(marker, markerInfoWindow);
     });
