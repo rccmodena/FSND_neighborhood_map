@@ -47,3 +47,7 @@ html, body {
 li {
   cursor: pointer;
 }
+
+.error-map {
+  margin-top: 300px;
+}
