@@ -114,21 +114,9 @@ function initMap() {
     // Push the marker to our array of markers.
     markers.push(marker);
 
-
-
-    /*
-    // Restrict the map bounds
-    let bounds = new google.maps.LatLngBounds();
-
-    // Extend the boundaries of the map for each marker
-    bounds.extend(marker.position);
-    */
-
-
-
     // Create an onclick event to open an infowindow at each marker.
     marker.addListener('click', function(){
-      populateInfoWindow(this, markerInfoWindow);
+      createInfoWindow(this, markerInfoWindow);
     });
 
     // Two event listeners - one for mouseover, one for mouseout, to change the colors back and forth.
@@ -144,7 +132,7 @@ function initMap() {
   showMarkers();
 }
 
-// This function takes in a color, and then creates a new marker icon of that color. The icon will be 21px wide by 34 high, have an origin of 0, 0 and be anchored at 10, 34.
+// Function
 function makeMarkerIcon(markerColor){
   const markerImage = new google.maps.MarkerImage(
   'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1|0|' + markerColor + '|40|_|%E2%80%A2',
@@ -168,5 +156,20 @@ function hideMarkers(markers) {
   markers.forEach(function(marker, index){
     marker.setMap(null);
   });
+}
+
+// Function
+function createInfoWindow(marker, infowindow) {
+  if (infowindow.marker != marker) {
+    console.log(marker.title);
+    infowindow.marker = marker;
+    infowindow.setContent('<div class="text-dark font-weight-bold">' + marker.title + '</div>');
+
+    infowindow.addListener('closeclick', function(){
+      infowindow.marker = null;
+    })
+
+    infowindow.open(map, marker);
+  }
 }
 // *************** GOOGLE MAPS API ***************
