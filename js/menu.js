@@ -3,6 +3,7 @@ function showSideMenu() {
   document.getElementById("sideMenu").style.width = "300px";
   document.getElementById("sideMenu").classList.toggle("container-fluid");
   document.getElementById("placesList").style.visibility = "visible";
+  document.getElementById("filterPlaces").focus(); 
 }
 
 // Function to close the side menu
