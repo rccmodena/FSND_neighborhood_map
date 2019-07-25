@@ -1,5 +1,3 @@
-// *************** VIEW MODEL ***************
-
 // Object with the initial places names and location.
 const initialPlaces = [
   {
@@ -43,6 +41,9 @@ const initialPlaces = [
     lng: -109.2890082,
   }
 ]
+
+
+// *************** VIEW MODEL ***************
 // Create the "Place" that has the name and other informations about the place
 const Place = function(data) {
   this.name = ko.observable(data.name);
@@ -54,17 +55,47 @@ const Place = function(data) {
   }, this);
 }
 
+// The view model
 let viewModel = function() {
   let self = this;
+
+  // Text typed by the user in the search bar
+  this.filteredText = ko.observable("")
+
+  // Create the list of places based on the initialPlaces Array
   this.placesList = ko.observableArray([]);
   initialPlaces.forEach(function(placeItem){
     self.placesList.push(new Place(placeItem));
+  });
+
+  // When change the filteredText trigger this function
+  this.filteredText.subscribe(function(){
+    // Convert filteredText to lower case
+    const lowerText = self.filteredText().toLowerCase();
+
+    // Get all item of the list
+    const listLis = document.getElementsByTagName("li");
+
+    // Convert the HTMLCollection to array
+    const arrayLis = Array.prototype.slice.call(listLis);
+
+    arrayLis.forEach(function(li){
+      // Convert li content to lower case
+      const lowerLi = li.innerText.toLowerCase();
+
+      // Verify if the input text is part of the text of
+      // the list, if not remove the item from the list
+      if (lowerLi.indexOf(lowerText) > -1) {
+          li.style.display = "";
+      } else {
+          li.style.display = "none";
+      }
+    });
   });
 };
 
 ko.applyBindings(new viewModel());
 // *************** VIEW MODEL ***************
-
 
 // *************** GOOGLE MAPS API ***************
 // Create the variable for the map
@@ -111,28 +142,37 @@ function initMap() {
       id: index
     });
 
-    // Push the marker to our array of markers.
+    // Push this marker to the array of markers.
     markers.push(marker);
 
-    // Create an onclick event to open an infowindow at each marker.
+    // Bounce the marker once and open an info window when click on a specific marker.
     marker.addListener('click', function(){
+      bounceMarker(this);
       createInfoWindow(this, markerInfoWindow);
     });
 
-    // Two event listeners - one for mouseover, one for mouseout, to change the colors back and forth.
+    // Bounce the marker once and open an info window when click the item in the list that corresponds to a marker.
+    document.getElementsByTagName("li")[index].addEventListener('click', function(){
+      bounceMarker(marker);
+      createInfoWindow(marker, markerInfoWindow);
+    });
+
+    // When hover over an marker change it to selectedIcon.
     marker.addListener('mouseover', function(){
       this.setIcon(selectedIcon);
     });
 
+    // When leave out the mouse over an marker change it to normalIcon.
     marker.addListener('mouseout', function(){
       this.setIcon(normalIcon);
     });
   });
 
+  // Show all markers when the app is open
   showMarkers();
 }
 
-// Function
+// Create the icon displayed as a marker, the argument is the color of the marker in hexadecimal.
 function makeMarkerIcon(markerColor){
   const markerImage = new google.maps.MarkerImage(
   'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1|0|' + markerColor + '|40|_|%E2%80%A2',
@@ -151,14 +191,7 @@ function showMarkers() {
   });
 }
 
-// This function will loop through the listings and hide them all.
-function hideMarkers(markers) {
-  markers.forEach(function(marker, index){
-    marker.setMap(null);
-  });
-}
-
-// Function
+// Create the infowindow with information about the place that the marker represents.
 function createInfoWindow(marker, infowindow) {
   if (infowindow.marker != marker) {
     console.log(marker.title);
@@ -171,5 +204,11 @@ function createInfoWindow(marker, infowindow) {
 
     infowindow.open(map, marker);
   }
+}
+
+// Function to bounce once the selected marker
+function bounceMarker(marker) {
+  marker.setAnimation(google.maps.Animation.BOUNCE);
+  setTimeout(function(){ marker.setAnimation(null); }, 500);
 }
 // *************** GOOGLE MAPS API ***************

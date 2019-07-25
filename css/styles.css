@@ -43,3 +43,7 @@ html, body {
   transition: 0.3s;
   padding-top: 50px;
 }
+
+li {
+  cursor: pointer;
+}

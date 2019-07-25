@@ -45,7 +45,7 @@
         <span>&times;</span>
       </button>
       <hr>
-      <input id="places-search" class="form-control" type="text" placeholder="Search a place. Ex. Orongo" size="20">
+      <input id="filterPlaces" class="form-control" type="text" data-bind="textInput: filteredText" placeholder="Search a place. Ex. Orongo" size="20">
       <hr>
       <ul id="placesList" class="list-group" data-bind="foreach: placesList">
         <li class="list-group-item list-group-item-action" data-bind="text: name"></li>
