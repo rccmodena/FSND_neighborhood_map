@@ -4,9 +4,21 @@ This is the fifth project of the Udacity's Full Stack Web Developers Nanodegree.
 
 The project consists in developing a single page application featuring a map of a neighborhood I would like to visit ([Easter Island](https://en.wikipedia.org/wiki/Easter_Island)).
 
+The app has 8 places from the Easter Island:
 
-Some functionality was added to this map including **highlighted locations, third-party data about those locations and various ways to browse the content.
-REVIEW THIS TEXT**
+- [Orongo](https://en.wikipedia.org/wiki/Orongo)
+- [Ahu Akivi](https://en.wikipedia.org/wiki/Ahu_Akivi)
+- [Ahu Tahai](https://en.wikipedia.org/wiki/Ahu_Tahai)
+- [Ahu Tongariki](https://en.wikipedia.org/wiki/Ahu_Tongariki)
+- [Ahu Vinapu](https://en.wikipedia.org/wiki/Ahu_Vinapu)
+- [Anakena](https://en.wikipedia.org/wiki/Anakena)
+- [Puna Pau](https://en.wikipedia.org/wiki/Puna_Pau)
+- [Rano Raraku](https://en.wikipedia.org/wiki/Rano_Raraku)
+
+Some functionality was added to this map including:
+- Search bar to filter the name of the places;
+- Highlight the locations when clicking the name in the list view;
+- When clicking in the marker of the place show a photograph from [Foursquare](https://foursquare.com/).
 
 ## Install
 
@@ -30,12 +42,17 @@ The website uses:
 - [Google Font - Josefin Sans](https://fonts.google.com/specimen/Josefin+Sans)
 - [Knockout 3.5.0](https://knockoutjs.com/)
 
+## APIs Used
+- ([Google Maps API V3](https://developers.google.com/maps/documentation/javascript/reference/)) to present the map and the markers of the locations.
+- ([Foursquare API](https://developer.foursquare.com/docs)) to show a photograph of the place when clicking on the marker.
+
 ## References
 
 - [Bootstrap Docs](https://getbootstrap.com/docs/4.2/getting-started/introduction/)
 - [W3schools](https://www.w3schools.com/)
 - [Google Maps API V3 - Docs](https://developers.google.com/maps/documentation/javascript/reference/)
 - [Knockout Docs](https://knockoutjs.com/documentation/introduction.html)
+- [Foursquare API Docs](https://developer.foursquare.com/docs)
 
 ## Tests
 
