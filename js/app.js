@@ -35,6 +35,16 @@ const initialPlaces = [
 ]
 
 // *************** GOOGLE MAPS API ***************
+
+// Display an erro message if the Google Maps API do not
+// Respond after 3 seconds
+setTimeout(function(){
+  const errorElement = document.getElementById("errorMap");
+  if (errorElement !== null){
+    errorElement.innerHTML = "This page didn't load Google Maps correctly!";
+  }
+}, 3000);
+
 // Create the variable for the map
 let map;
 
@@ -130,8 +140,13 @@ function createInfoWindow(marker, infowindow) {
   if (infowindow.marker != marker) {
     // Set the current infowindow to the marker
     infowindow.marker = marker;
-    // Create the content display in the info window
-    infowindow.setContent('<div class="text-dark font-weight-bold">' + marker.title + '</div>');
+
+    // Create a basic content with the title of the marker
+    infowindow.setContent('<div class="text-dark font-weight-bold">'+ marker.title +'</div>');
+
+    // Get a photo of the marker from Foursquare API and
+    // set info window content
+    getFoursquareContent(marker, infowindow);
 
     // Add a function to the close button on the info window
     infowindow.addListener('closeclick', function(){
@@ -143,6 +158,40 @@ function createInfoWindow(marker, infowindow) {
   }
 }
 
+function getFoursquareContent(marker, infoWindow) {
+  // Foursquare Cliente ID
+  const foursquareClientId = 'AOYDE1MNGPIKV04KLIIKAL4CO5OSSWQGQADR4ADVJNAFJWWR';
+  // Foursquare Cliente Secret
+  const foursquareClientSecret = '0CFQYLQCL22HENZWQ1JDDRUISZS3TTPCVINP4VXZSFY02F0C';
+
+  let photoAddress;
+
+  // Search for the Venue ID
+  getIDFoursquareUrl = 'https://api.foursquare.com/v2/venues/search?ll=' + marker.position.lat() + ',' + marker.position.lng() + '&client_id=' + foursquareClientId + '&client_secret=' + foursquareClientSecret + '&v=20190725';
+  $.getJSON(getIDFoursquareUrl).done(function(data){
+    // Get the Venue ID
+    let id = data.response.venues[0].id;
+    // Search for one photo of the Venue
+    getPhotoFoursquareUrl = 'https://api.foursquare.com/v2/venues/'+id+'/photos?/&client_id=' + foursquareClientId + '&client_secret=' + foursquareClientSecret + '&v=20190725';
+    $.getJSON(getPhotoFoursquareUrl).done(function(data){
+      // Get the Photo
+      const photo = data.response.photos.items[0];
+      // Small photo from Foursquare (100x100)
+      smallphotoAddress = photo.prefix+'100x100'+photo.suffix;
+      // Photor from Foursquare with original size
+      originalphotoAddress = photo.prefix+'original'+photo.suffix;
+
+      infoWindow.setContent('<div class="text-dark font-weight-bold">'+ marker.title +'</div><br><div><img src="' + smallphotoAddress + '"></div><div class="text-dark">Source: <a target="_blank" href="' + originalphotoAddress + '">Foursquare</a></div>');
+    }).fail(function(error){
+      // Display error message, unable to get the photo
+      infoWindow.setContent('<div class="text-dark font-weight-bold">'+ marker.title +'</div><br><div class="text-dark">Fail to get Foursquare Photo!</div>');
+    });
+  }).fail(function(error){
+    // Display error message, unable to connect to Foursquare
+    infoWindow.setContent('<div class="text-dark font-weight-bold">'+ marker.title +'</div><br><div class="text-dark">Fail to connect to Foursquare!</div>');
+  });
+}
+
 // Function to bounce once the selected marker
 function bounceMarker(marker) {
   // Set animation to Bounce
@@ -152,6 +201,7 @@ function bounceMarker(marker) {
     marker.setAnimation(null);
   }, 500);
 }
+
 // *************** GOOGLE MAPS API ***************
 
 // *************** VIEW MODEL ***************

@@ -24,7 +24,7 @@
 
     <!-- Google Maps div -->
     <div id="map">
-      <div class="text-center display-4 error-map">This page didn't load Google Maps correctly!</div>
+      <div id="errorMap" class="text-center display-4 error-map"></div>
     </div>
 
     <!-- Website header with search button -->
@@ -47,7 +47,7 @@
         <span>&times;</span>
       </button>
       <hr>
-      <input id="filterPlaces" class="form-control" type="text" data-bind="textInput: filteredText" placeholder="Search a place. Ex. Orongo" size="20">
+      <input id="filterPlaces" class="form-control" type="text" data-bind="textInput: filteredText" placeholder="Search a place of the list. Ex. Orongo" size="20">
       <hr>
       <ul id="placesList" class="list-group" data-bind="foreach: placesList">
         <li class="list-group-item list-group-item-action" data-bind="text: name"></li>
@@ -70,6 +70,6 @@
     <script src="js/menu.js"></script>
 
     <!-- Google Maps API -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyAleBmF4WiZuE7eVTsFkEa6Y6WXQfLFtmA&v=3&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAleBmF4WiZuE7eVTsFkEa6Y6WXQfLFtmA&v=3&callback=initMap"></script>
   </body>
 </html>

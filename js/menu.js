@@ -1,7 +1,7 @@
 // Function to show the side menu
 function showSideMenu() {
   // Set the width of the side menu
-  document.getElementById("sideMenu").style.width = "300px";
+  document.getElementById("sideMenu").style.width = "350px";
   // Add the Bootstrap class container-fluid
   document.getElementById("sideMenu").classList.toggle("container-fluid");
   // Set to visible the list of places
