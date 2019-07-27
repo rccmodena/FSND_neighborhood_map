@@ -244,12 +244,12 @@ let viewModel = function() {
           // Display in the list
           li.style.display = "";
           // Display on the map
-          markers[index].setMap(map);
+          markers[index].setVisible(true);
       } else {
           // Remove from the list
           li.style.display = "none";
           // Remove from the map
-          markers[index].setMap(null);
+          markers[index].setVisible(false);
       }
     });
   });
