@@ -35,16 +35,6 @@ const initialPlaces = [
 ]
 
 // *************** GOOGLE MAPS API ***************
-
-// Display an erro message if the Google Maps API do not
-// Respond after 3 seconds
-setTimeout(function(){
-  const errorElement = document.getElementById("errorMap");
-  if (errorElement !== null){
-    errorElement.innerHTML = "This page didn't load Google Maps correctly!";
-  }
-}, 3000);
-
 // Create the variable for the map
 let map;
 
@@ -120,6 +110,14 @@ function initMap() {
   markers.forEach(function(marker, index){
     marker.setMap(map);
   });
+}
+
+// Display an erro message if the Google Maps API do not load
+function loadingError() {
+  const errorElement = document.getElementById("errorMap");
+  if (errorElement !== null){
+    errorElement.innerHTML = "This page didn't load Google Maps correctly!";
+  }
 }
 
 // Create the icon displayed as a marker, the argument is the color of the marker in hexadecimal.
